@@ -120,6 +120,10 @@
 			let total = 0;
 			// defines discount display value
 			let discount_value = 0;
+			// defines tax value
+			let tax_value = 0;
+			// running grand total
+			let grand_total = 0;
 
 			// calculates line 1 total
 			line_total = document.querySelector("#line-1-quantity").value * Anvil;
@@ -154,27 +158,15 @@
 				discount_value = 0.00;
 				document.querySelector("#discount").innerHTML = discount_value.toFixed(2)
 			}
-			
+			// displays tax value
+			tax_value = total * tax;
+			document.querySelector("#tax").innerHTML = tax_value.toFixed(2);
+			grand_total += total + tax;
+			// displays grand total
+			document.querySelector("#Total").innerHTML = grand_total.toFixed(2);
 	    }
-	
+		// activates when event action happens
 		calculate_btn.addEventListener("click", calculate);
-	/*
-
-                Use the following steps to complete your assignment.
-
-                @NOTE: Do not include these comments in your final submission. 
-                       Your final submission MUST include your own comments.
-
-                1. Retrieve the quantities & price for each line
-                2. Calculate the total for each line
-                3. Display each line total to the screen (Be sure to display the result to two decimal places)
-                4. Keep a running total for all lines
-                5. Display the sub-total to screen
-                6. Calculate if the discount should be applied, if so display the discount value to the screen
-                7. Calculate the tax on the sub-total
-                8. Display the calculated to the screen to two decimal places
-                
-            */
     </script>
 </body>
 </html>
