@@ -106,6 +106,10 @@
 		const Ball_Bearings = 0.25;
 		// defines portable holes value
 		const Portable_Holes = 15.25;
+		// defines discount value
+		const discount = 0.1;
+		// defines tax value
+		const tax = 0.12;
 
 	    function calculate() {
 			// defines line total
@@ -114,6 +118,8 @@
 			let sub_total = 0;
 			// defines total
 			let total = 0;
+			// defines discount display value
+			let discount_value = 0;
 
 			// calculates line 1 total
 			line_total = document.querySelector("#line-1-quantity").value * Anvil;
@@ -139,8 +145,16 @@
 			document.querySelector("#sub-total").innerHTML = sub_total.toFixed(2);
 			// discount application
 			if(sub_total > 250) {
-				total = sub_total * 0.9;
+				discount_value = sub_total * discount
+				document.querySelector("#discount").innerHTML = discount_value.toFixed(2);
+				total += sub_total - discount_value;
+			} 
+			// if if statement is not TRUE, displays 0.00
+			else {
+				discount_value = 0.00;
+				document.querySelector("#discount").innerHTML = discount_value.toFixed(2)
 			}
+			
 	    }
 	
 		calculate_btn.addEventListener("click", calculate);
