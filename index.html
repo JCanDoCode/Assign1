@@ -94,78 +94,78 @@
 
 	<script>
 
-		// Josel Canlas A01361517
+		// Josel Canlas A01361517 Assignment 1
+		// creates a variable that holds the #calculate button:
 		const calculate_btn = document.querySelector("#calculate");
-		// defines anvil value
+		// defines anvil value:
 		const Anvil = 35;
-		// defines rocket skates value
+		// defines rocket skates value:
 		const Rocket_Skates = 24.99;
-		// defines giant magnet value
+		// defines giant magnet value:
 		const Giant_Magnet = 125.50;
-		// defines ball bearings value
+		// defines ball bearings value:
 		const Ball_Bearings = 0.25;
-		// defines portable holes value
+		// defines portable holes value:
 		const Portable_Holes = 15.25;
-		// defines discount value
+		// defines discount value:
 		const discount = 0.1;
-		// defines tax value
+		// defines tax value:
 		const tax = 0.12;
 
 	    function calculate() {
-			// defines line total
+			// defines the line total that holds the value of the calculated:
 			let line_total = 0;
-			// defines sub total
+			// defines the running sub total which will add all of the line totals. This value is added together as the function runs:
 			let sub_total = 0;
-			// defines total
+			// defines the running total that will hold the sub total - the discount value:
 			let total = 0;
-			// defines discount display value
-			let discount_value = 0;
-			// defines tax value
+			// defines tax value to be displayed to the #tax span:
 			let tax_value = 0;
-			// running grand total
+			// defines the running grand total:
 			let grand_total = 0;
 
-			// calculates line 1 total
+			// calculates line 1 total:
+			// retrieves value inputted from the #line-1-quantity and calculates it with const price:
 			line_total = document.querySelector("#line-1-quantity").value * Anvil;
-			document.querySelector("#line-1").innerHTML = line_total.toFixed(2);
+			// displays line 1 total to span. Also adds a concatenate "$" behind the line total value. toFixed(2) rounds the number to the second decimal place:
+			document.querySelector("#line-1").innerHTML = "$ " + line_total.toFixed(2);
+			// adds current line total to the running sub total:
 			sub_total += line_total;
-			// calculates line 2 total
+			// calculates line 2 total:
 			line_total = document.querySelector("#line-2-quantity").value * Rocket_Skates;
-			document.querySelector("#line-2").innerHTML = line_total.toFixed(2);
+			document.querySelector("#line-2").innerHTML = "$ " + line_total.toFixed(2);
 			sub_total += line_total;
-			// calculates line 3 total
+			// calculates line 3 total:
 			line_total = document.querySelector("#line-3-quantity").value * Giant_Magnet;
-			document.querySelector("#line-3").innerHTML = line_total.toFixed(2);
+			document.querySelector("#line-3").innerHTML = "$ " + line_total.toFixed(2);
 			sub_total += line_total;
-			// calculates line 4 total
+			// calculates line 4 total:
 			line_total = document.querySelector("#line-4-quantity").value * Ball_Bearings;
-			document.querySelector("#line-4").innerHTML = line_total.toFixed(2);
+			document.querySelector("#line-4").innerHTML = "$ " + line_total.toFixed(2);
 			sub_total += line_total;
-			// calculates line 5 total
+			// calculates line 5 total:
 			line_total = document.querySelector("#line-5-quantity").value * Portable_Holes;
-			document.querySelector("#line-5").innerHTML = line_total.toFixed(2);
+			document.querySelector("#line-5").innerHTML = "$ " + line_total.toFixed(2);
 			sub_total += line_total;
-			// display sub total
-			document.querySelector("#sub-total").innerHTML = sub_total.toFixed(2);
-			// discount application
-			if(sub_total > 250) {
-				discount_value = sub_total * discount
-				document.querySelector("#discount").innerHTML = discount_value.toFixed(2);
-				total += sub_total - discount_value;
-			} 
-			// if if statement is not TRUE, displays 0.00
-			else {
-				discount_value = 0.00;
-				document.querySelector("#discount").innerHTML = discount_value.toFixed(2)
-			}
-			// displays tax value
+
+			// display the running sub total to the #sub-total span:
+			document.querySelector("#sub-total").innerHTML = "$ " + sub_total.toFixed(2);
+			// if the sub total is greater than 250, then it will multiply the sub total by the const discount variable and lets the discount value be this calculated value. If this ternary operation is false, it will let the discount value be 0.00:
+			let discount_value = (sub_total > 250) ? (sub_total * discount) : (0.00);
+			// displays the calculated discount value to #discount span:
+			document.querySelector("#discount").innerHTML = "$ " + discount_value.toFixed(2);
+			// adds the sub total - the calculated discount value:
+			total += sub_total - discount_value;
+			// multiplies the total (above) by the tax const:
 			tax_value = total * tax;
-			document.querySelector("#tax").innerHTML = tax_value.toFixed(2);
-			grand_total += total + tax;
-			// displays grand total
-			document.querySelector("#Total").innerHTML = grand_total.toFixed(2);
+			// displays the calculated tax value to the #tax span:
+			document.querySelector("#tax").innerHTML = "$ " + tax_value.toFixed(2);
+			// adds this tax value to the grand total 
+			grand_total += total + tax_value;
+			// displays grand total to the #Total span:
+			document.querySelector("#Total").innerHTML = "$ " + grand_total.toFixed(2);
 	    }
-		// activates when event action happens
+		// activates the calculate function when the user clicks on the calculate_btn variable which holds the #calculate button:
 		calculate_btn.addEventListener("click", calculate);
     </script>
 </body>
